@@ -6,6 +6,9 @@
 // ==============================
 
 .navbar {
+    position: relative;
+    z-index: 10;
+    
     background-color: variables.$color-primario;
     padding: variables.$espaciado-pequeno 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
