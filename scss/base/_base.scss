@@ -1,0 +1,110 @@
+@use "../utilities/variables";
+@use "../utilities/mixins";
+
+// ==============================
+// RESET
+// ==============================
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+// ==============================
+// HTML
+// ==============================
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+// ==============================
+// BODY
+// ==============================
+
+body {
+    min-width: 320px;
+    background-color: variables.$color-fondo;
+    color: variables.$color-texto;
+    font-family: variables.$fuente-principal;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+// ==============================
+// IMÁGENES
+// ==============================
+
+img {
+    @include mixins.imagen-responsive();
+    display: block;
+}
+
+
+// ==============================
+// ENLACES
+// ==============================
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+// ==============================
+// LISTAS
+// ==============================
+
+ul,
+ol {
+    list-style: none;
+}
+
+
+// ==============================
+// BOTONES Y FORMULARIOS
+// ==============================
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    border: 0;
+}
+
+
+// ==============================
+// CONTENEDOR GENERAL
+// ==============================
+
+.contenedor {
+    @include mixins.contenedor();
+}
+
+
+// ==============================
+// SECCIONES
+// ==============================
+
+.seccion {
+    padding-block: variables.$espaciado-xl;
+}
+
+
+// ==============================
+// RESPONSIVE
+// ==============================
+
+@include mixins.responsive(variables.$breakpoint-tablet) {
+    .seccion {
+        padding-block: variables.$espaciado-xxl;
+    }
+}

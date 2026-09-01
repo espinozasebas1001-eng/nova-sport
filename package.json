@@ -1,0 +1,18 @@
+{
+  "name": "nova-sport",
+  "version": "1.0.0",
+  "description": "E-commerce de ropa deportiva",
+  "scripts": {
+    "sass": "sass scss/main.scss styles/style.css"
+  },
+  "keywords": [
+    "ecommerce",
+    "ropa deportiva",
+    "tienda deportiva"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.103.1"
+  }
+}

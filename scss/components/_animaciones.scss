@@ -1,0 +1,67 @@
+@use "../utilities/variables";
+
+// ==============================
+// ANIMACIÓN NATIVA
+// ==============================
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+// ==============================
+// CLASE PARA ANIMAR ELEMENTOS
+// ==============================
+
+.animar-aparicion {
+    animation: aparecer 0.7s ease-out both;
+}
+
+
+// ==============================
+// ANIMACIÓN DEL LOGO
+// ==============================
+
+.logo-pulse {
+    animation: pulso 2s ease-in-out infinite;
+}
+
+@keyframes pulso {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+
+// ==============================
+// ANIMACIÓN DE CARGA
+// ==============================
+
+.cargando {
+    width: 40px;
+    height: 40px;
+    margin: variables.$espaciado-grande auto;
+    border: 4px solid variables.$color-borde;
+    border-top-color: variables.$color-acento;
+    border-radius: 50%;
+    animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}

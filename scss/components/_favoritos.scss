@@ -1,0 +1,63 @@
+@use "../utilities/variables";
+@use "../utilities/mixins";
+
+// ==============================
+// FAVORITOS
+// ==============================
+
+.favoritos {
+    padding-block: variables.$espaciado-xl;
+
+    &__encabezado {
+        @include mixins.contenedor();
+        margin-bottom: variables.$espaciado-grande;
+        text-align: center;
+    }
+
+    &__titulo {
+        margin-bottom: variables.$espaciado-pequeno;
+    }
+
+    &__descripcion {
+        max-width: 600px;
+        margin-inline: auto;
+    }
+
+    &__grid {
+        @include mixins.contenedor();
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: variables.$espaciado-medio;
+    }
+
+    &__vacio {
+        @include mixins.contenedor();
+        padding: variables.$espaciado-xl variables.$espaciado-medio;
+        border: 1px dashed variables.$color-borde;
+        border-radius: variables.$radio-medio;
+        background-color: variables.$color-superficie;
+        text-align: center;
+    }
+
+    &__icono {
+        margin-bottom: variables.$espaciado-medio;
+        font-size: 3rem;
+    }
+
+    &__mensaje {
+        margin-bottom: variables.$espaciado-medio;
+    }
+
+    @include mixins.responsive(variables.$breakpoint-tablet) {
+        &__grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: variables.$espaciado-grande;
+        }
+    }
+
+    @include mixins.responsive(variables.$breakpoint-desktop) {
+        &__grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}

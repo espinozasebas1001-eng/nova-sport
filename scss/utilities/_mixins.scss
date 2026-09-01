@@ -1,0 +1,75 @@
+@use "variables";
+
+// ==============================
+// MIXIN PARA CONTENEDORES
+// ==============================
+
+@mixin contenedor($ancho: variables.$ancho-contenedor) {
+    width: min(90%, $ancho);
+    margin-inline: auto;
+}
+
+
+// ==============================
+// MIXIN PARA FLEX
+// ==============================
+
+@mixin flex-center($direccion: row, $gap: variables.$espaciado-medio) {
+    display: flex;
+    flex-direction: $direccion;
+    align-items: center;
+    justify-content: center;
+    gap: $gap;
+}
+
+
+// ==============================
+// MIXIN PARA RESPONSIVE
+// ==============================
+
+@mixin responsive($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+
+// ==============================
+// MIXIN PARA BOTONES
+// ==============================
+
+@mixin boton($fondo, $texto, $hover) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border: 2px solid $fondo;
+    border-radius: variables.$radio-medio;
+    background-color: $fondo;
+    color: $texto;
+    font-family: variables.$fuente-principal;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background-color variables.$transicion-normal,
+        border-color variables.$transicion-normal,
+        transform variables.$transicion-normal;
+
+    &:hover {
+        background-color: $hover;
+        border-color: $hover;
+        transform: translateY(-2px);
+    }
+}
+
+
+// ==============================
+// MIXIN PARA IMÁGENES
+// ==============================
+
+@mixin imagen-responsive($alto: auto, $objeto: cover) {
+    width: 100%;
+    height: $alto;
+    object-fit: $objeto;
+}

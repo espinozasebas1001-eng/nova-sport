@@ -1,0 +1,161 @@
+@use "../utilities/variables";
+@use "../utilities/mixins";
+
+// ==============================
+// PÁGINAS INTERNAS
+// ==============================
+
+.page-hero {
+    padding: variables.$espaciado-xl variables.$espaciado-medio;
+    background-color: variables.$color-primario;
+    color: variables.$color-blanco;
+    text-align: center;
+
+    &__contenido {
+        @include mixins.contenedor();
+        max-width: 850px;
+    }
+
+    &__titulo {
+        margin-bottom: variables.$espaciado-pequeno;
+        color: variables.$color-blanco;
+        font-size: clamp(2rem, 6vw, 3.5rem);
+    }
+
+    &__descripcion {
+        max-width: 650px;
+        margin-inline: auto;
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+    &__breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-top: variables.$espaciado-medio;
+        font-size: variables.$texto-pequeno;
+
+        a {
+            color: variables.$color-acento;
+            text-decoration: none;
+        }
+    }
+}
+
+
+// ==============================
+// CONTENEDOR GENERAL
+// ==============================
+
+.contenedor {
+    width: min(
+        calc(100% - (variables.$espaciado-medio * 2)),
+        variables.$ancho-contenedor
+    );
+    margin-inline: auto;
+}
+
+.seccion {
+    padding-block: variables.$espaciado-xl;
+}
+
+
+// ==============================
+// TEXTO DE ACENTO
+// ==============================
+
+.texto-acento {
+    color: variables.$color-acento;
+}
+
+
+// ==============================
+// PLACEHOLDER DE PRODUCTO
+// ==============================
+
+.producto-placeholder {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(
+            135deg,
+            variables.$color-primario,
+            variables.$color-primario-hover
+        );
+    color: variables.$color-acento;
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 700;
+    letter-spacing: 6px;
+}
+
+
+// ==============================
+// ESTADO VACÍO
+// ==============================
+
+.estado-vacio {
+    @include mixins.contenedor();
+    padding: variables.$espaciado-xl variables.$espaciado-medio;
+    text-align: center;
+
+    &__icono {
+        margin-bottom: variables.$espaciado-medio;
+        font-size: 3rem;
+    }
+
+    &__titulo {
+        margin-bottom: variables.$espaciado-pequeno;
+    }
+
+    &__texto {
+        max-width: 500px;
+        margin: 0 auto variables.$espaciado-medio;
+        color: variables.$color-texto-secundario;
+    }
+}
+
+
+// ==============================
+// MENSAJES DEL SITIO
+// ==============================
+
+.mensaje {
+    padding: variables.$espaciado-medio;
+    border-radius: variables.$radio-pequeno;
+    background-color: variables.$color-fondo;
+    color: variables.$color-texto;
+
+    &--exito {
+        border: 1px solid variables.$color-acento;
+    }
+
+    &--error {
+        border: 1px solid variables.$color-primario;
+    }
+}
+
+
+// ==============================
+// RESPONSIVE
+// ==============================
+
+@include mixins.responsive(variables.$breakpoint-tablet) {
+    .page-hero {
+        padding-block: 80px;
+    }
+
+    .seccion {
+        padding-block: 80px;
+    }
+}
+
+@include mixins.responsive(variables.$breakpoint-desktop) {
+    .page-hero {
+        padding-block: 100px;
+    }
+}

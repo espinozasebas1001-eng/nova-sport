@@ -1,0 +1,90 @@
+@use "../utilities/variables";
+@use "../utilities/mixins";
+
+// ==============================
+// TIPOGRAFÍA GENERAL
+// ==============================
+
+body {
+    font-family: variables.$fuente-principal;
+    font-size: variables.$texto-normal;
+}
+
+
+// ==============================
+// TÍTULOS
+// ==============================
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: variables.$color-texto;
+    font-family: variables.$fuente-titulo;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+
+// ==============================
+// TÍTULO PRINCIPAL
+// ==============================
+
+h1 {
+    font-size: variables.$texto-xl;
+}
+
+
+// ==============================
+// SUBTÍTULOS
+// ==============================
+
+h2 {
+    font-size: variables.$texto-grande;
+}
+
+h3 {
+    font-size: variables.$texto-mediano;
+}
+
+
+// ==============================
+// PÁRRAFOS
+// ==============================
+
+p {
+    color: variables.$color-texto-secundario;
+    font-size: variables.$texto-normal;
+}
+
+
+// ==============================
+// TEXTO DESTACADO
+// ==============================
+
+.texto-acento {
+    color: variables.$color-acento;
+    font-weight: 600;
+}
+
+
+// ==============================
+// RESPONSIVE
+// ==============================
+
+@include mixins.responsive(variables.$breakpoint-tablet) {
+
+    h1 {
+        font-size: variables.$texto-xxl;
+    }
+
+    h2 {
+        font-size: variables.$texto-xl;
+    }
+
+    h3 {
+        font-size: variables.$texto-grande;
+    }
+}

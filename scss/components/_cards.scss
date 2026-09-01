@@ -1,0 +1,146 @@
+@use "../utilities/variables";
+@use "../utilities/mixins";
+
+// ==============================
+// CARD DE PRODUCTO
+// ==============================
+
+.producto-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid variables.$color-borde;
+    border-radius: variables.$radio-medio;
+    background-color: variables.$color-superficie;
+    transition:
+        transform variables.$transicion-normal,
+        box-shadow variables.$transicion-normal;
+
+    // Animación nativa
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    &__imagen {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 1 / 1;
+        background-color: variables.$color-fondo;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform variables.$transicion-normal;
+        }
+    }
+
+    &:hover &__imagen img {
+        transform: scale(1.04);
+    }
+
+    &__contenido {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: variables.$espaciado-medio;
+    }
+
+    &__categoria {
+        margin-bottom: 6px;
+        color: variables.$color-texto-secundario;
+        font-size: variables.$texto-pequeno;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    &__titulo {
+        margin-bottom: variables.$espaciado-pequeno;
+        font-size: variables.$texto-mediano;
+        font-weight: 600;
+    }
+
+    &__descripcion {
+        margin-bottom: variables.$espaciado-medio;
+        color: variables.$color-texto-secundario;
+        font-size: variables.$texto-pequeno;
+    }
+
+    &__precio {
+        margin-top: auto;
+        margin-bottom: variables.$espaciado-medio;
+        color: variables.$color-texto;
+        font-size: variables.$texto-grande;
+        font-weight: 700;
+    }
+
+    &__acciones {
+        display: flex;
+        flex-wrap: wrap;
+        gap: variables.$espaciado-pequeno;
+    }
+
+    // Botón de favoritos
+    &__favorito {
+        position: absolute;
+        top: variables.$espaciado-pequeno;
+        right: variables.$espaciado-pequeno;
+        z-index: 2;
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border: 1px solid variables.$color-borde;
+        border-radius: 50%;
+        background-color: variables.$color-superficie;
+        color: variables.$color-texto;
+        cursor: pointer;
+        transition:
+            background-color variables.$transicion-normal,
+            color variables.$transicion-normal,
+            transform variables.$transicion-normal;
+
+        &:hover {
+            background-color: variables.$color-acento;
+            color: variables.$color-negro;
+            transform: scale(1.08);
+        }
+
+        &.activo {
+            background-color: variables.$color-acento;
+            color: variables.$color-negro;
+        }
+    }
+
+    // Etiqueta de oferta
+    &__badge {
+        position: absolute;
+        top: variables.$espaciado-pequeno;
+        left: variables.$espaciado-pequeno;
+        z-index: 2;
+        padding: 5px 10px;
+        border-radius: variables.$radio-pequeno;
+        background-color: variables.$color-primario;
+        color: variables.$color-blanco;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+}
+
+// ==============================
+// EXTEND
+// ==============================
+
+.producto-card--destacado {
+    @extend .producto-card;
+
+    border: 2px solid variables.$color-acento;
+
+    .producto-card__precio {
+        color: variables.$color-acento-hover;
+    }
+}

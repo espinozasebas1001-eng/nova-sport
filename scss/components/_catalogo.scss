@@ -1,0 +1,48 @@
+@use "../utilities/variables";
+@use "../utilities/mixins";
+
+// ==============================
+// CATÁLOGO
+// ==============================
+
+.catalogo {
+    padding-block: variables.$espaciado-xl;
+
+    &__encabezado {
+        @include mixins.contenedor();
+        margin-bottom: variables.$espaciado-grande;
+        text-align: center;
+    }
+
+    &__titulo {
+        margin-bottom: variables.$espaciado-pequeno;
+    }
+
+    &__descripcion {
+        max-width: 650px;
+        margin-inline: auto;
+    }
+
+    // Grilla mobile
+    &__grid {
+        @include mixins.contenedor();
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: variables.$espaciado-medio;
+    }
+
+    // Tablet
+    @include mixins.responsive(variables.$breakpoint-tablet) {
+        &__grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: variables.$espaciado-grande;
+        }
+    }
+
+    // Desktop
+    @include mixins.responsive(variables.$breakpoint-desktop) {
+        &__grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}

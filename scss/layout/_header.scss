@@ -1,0 +1,78 @@
+@use "../utilities/variables";
+@use "../utilities/mixins";
+
+// ==============================
+// HEADER
+// ==============================
+
+.site-header {
+    position: relative;
+    background-color: variables.$color-primario;
+    color: variables.$color-blanco;
+    overflow: hidden;
+
+    // Elemento decorativo
+    &::after {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        right: -80px;
+        top: -80px;
+        border: 2px solid rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+    }
+
+    // Contenido interno
+    &__contenido {
+        @include mixins.contenedor();
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 70px;
+        gap: variables.$espaciado-medio;
+    }
+
+    // Logo
+    &__logo {
+        display: inline-flex;
+        align-items: center;
+        gap: variables.$espaciado-pequeno;
+        color: variables.$color-blanco;
+        font-size: variables.$texto-grande;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    // Ícono del logo
+    &__icono {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border-radius: 50%;
+        background-color: variables.$color-acento;
+        color: variables.$color-negro;
+        font-size: variables.$texto-normal;
+        font-weight: 700;
+    }
+
+    // Texto secundario
+    &__tagline {
+        display: none;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: variables.$texto-pequeno;
+    }
+
+    @include mixins.responsive(variables.$breakpoint-tablet) {
+        &__contenido {
+            min-height: 80px;
+        }
+
+        &__tagline {
+            display: inline;
+        }
+    }
+}

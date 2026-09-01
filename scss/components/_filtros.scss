@@ -1,0 +1,67 @@
+@use "../utilities/variables";
+@use "../utilities/mixins";
+
+// ==============================
+// FILTROS DEL CATÁLOGO
+// ==============================
+
+.filtros {
+    @include mixins.contenedor();
+    margin-bottom: variables.$espaciado-grande;
+
+    &__contenido {
+        display: flex;
+        flex-direction: column;
+        gap: variables.$espaciado-medio;
+        padding: variables.$espaciado-medio;
+        border: 1px solid variables.$color-borde;
+        border-radius: variables.$radio-medio;
+        background-color: variables.$color-superficie;
+    }
+
+    &__titulo {
+        font-size: variables.$texto-normal;
+        font-weight: 600;
+    }
+
+    &__lista {
+        display: flex;
+        flex-wrap: wrap;
+        gap: variables.$espaciado-pequeno;
+    }
+
+    &__boton {
+        padding: 9px 16px;
+        border: 1px solid variables.$color-borde;
+        border-radius: 999px;
+        background-color: variables.$color-superficie;
+        color: variables.$color-texto;
+        cursor: pointer;
+        font-size: variables.$texto-pequeno;
+        font-weight: 500;
+        transition:
+            background-color variables.$transicion-normal,
+            border-color variables.$transicion-normal,
+            color variables.$transicion-normal;
+
+        &:hover,
+        &.activo {
+            border-color: variables.$color-acento;
+            background-color: variables.$color-acento;
+            color: variables.$color-negro;
+        }
+    }
+
+    &__contador {
+        color: variables.$color-texto-secundario;
+        font-size: variables.$texto-pequeno;
+    }
+
+    @include mixins.responsive(variables.$breakpoint-tablet) {
+        &__contenido {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}

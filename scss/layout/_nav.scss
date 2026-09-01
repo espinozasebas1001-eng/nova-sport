@@ -1,0 +1,110 @@
+@use "../utilities/variables";
+@use "../utilities/mixins";
+
+// ==============================
+// NAVBAR BOOTSTRAP
+// ==============================
+
+.navbar {
+    background-color: variables.$color-primario;
+    padding: variables.$espaciado-pequeno 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    .container {
+        @include mixins.contenedor();
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: variables.$espaciado-pequeno;
+        color: variables.$color-blanco;
+        font-size: variables.$texto-grande;
+        font-weight: 700;
+        letter-spacing: 1px;
+
+        &:hover {
+            color: variables.$color-acento;
+        }
+    }
+
+    .navbar-toggler {
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 6px 10px;
+
+        &:focus {
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+        }
+    }
+
+    .navbar-toggler-icon {
+        filter: brightness(0) invert(1);
+    }
+
+    .navbar-nav {
+        gap: variables.$espaciado-pequeno;
+    }
+
+    .nav-link {
+        position: relative;
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 500;
+        transition:
+            color variables.$transicion-normal,
+            transform variables.$transicion-normal;
+
+        &:hover,
+        &.active {
+            color: variables.$color-acento;
+        }
+
+        &:hover {
+            transform: translateY(-1px);
+        }
+    }
+
+    // Indicador visual del enlace activo
+    .nav-link.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: variables.$color-acento;
+    }
+
+    // Iconos de carrito y favoritos
+    .nav-icon {
+        margin-left: 4px;
+    }
+
+    // Contadores
+    .nav-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 20px;
+        height: 20px;
+        margin-left: 4px;
+        padding: 2px 5px;
+        border-radius: 50%;
+        background-color: variables.$color-acento;
+        color: variables.$color-negro;
+        font-size: 0.7rem;
+        font-weight: 700;
+        vertical-align: middle;
+    }
+
+    // ==============================
+    // DESKTOP
+    // ==============================
+
+    @include mixins.responsive(variables.$breakpoint-desktop) {
+        padding-block: variables.$espaciado-medio;
+
+        .navbar-nav {
+            gap: variables.$espaciado-medio;
+        }
+    }
+}

@@ -1,0 +1,342 @@
+@use "../utilities/variables";
+@use "../utilities/mixins";
+
+// ==============================
+// CARRITO
+// ==============================
+
+.carrito {
+    padding-block: variables.$espaciado-xl;
+
+    &__contenedor {
+        @include mixins.contenedor();
+        display: grid;
+        gap: variables.$espaciado-grande;
+    }
+
+    // ==============================
+    // PRODUCTOS
+    // ==============================
+
+    &__productos {
+        min-width: 0;
+    }
+
+    &__encabezado {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: variables.$espaciado-medio;
+        margin-bottom: variables.$espaciado-medio;
+
+        h2 {
+            margin: 0;
+        }
+
+        span {
+            color: variables.$color-texto-secundario;
+            font-size: variables.$texto-pequeno;
+        }
+    }
+
+    &__lista {
+        display: grid;
+        gap: variables.$espaciado-medio;
+    }
+
+    // ==============================
+    // ITEM DEL CARRITO
+    // ==============================
+
+    .carrito-item {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: variables.$espaciado-medio;
+        padding: variables.$espaciado-medio;
+
+        border: 1px solid variables.$color-borde;
+        border-radius: variables.$radio-medio;
+        background-color: variables.$color-superficie;
+
+        transition:
+            transform variables.$transicion-normal,
+            box-shadow variables.$transicion-normal;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        // ==============================
+        // IMAGEN
+        // ==============================
+
+        &__imagen {
+            width: 100px;
+            height: 100px;
+            border-radius: variables.$radio-pequeno;
+            overflow: hidden;
+            background-color: variables.$color-fondo;
+
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+
+                // La imagen ocupa correctamente
+                // todo el espacio disponible.
+                object-fit: cover;
+                object-position: center;
+
+                padding: 0;
+            }
+        }
+
+        // ==============================
+        // INFORMACIÓN
+        // ==============================
+
+        &__informacion {
+            min-width: 0;
+
+            h3 {
+                margin: 4px 0;
+                font-size: variables.$texto-normal;
+                font-weight: 600;
+            }
+
+            p {
+                margin: 0;
+                color: variables.$color-texto-secundario;
+                font-size: variables.$texto-pequeno;
+            }
+        }
+
+        // ==============================
+        // CANTIDAD
+        // ==============================
+
+        &__cantidad {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            width: fit-content;
+            margin-top: variables.$espaciado-pequeno;
+
+            button {
+                width: 34px;
+                height: 34px;
+
+                border: 1px solid variables.$color-borde;
+                background-color: variables.$color-fondo;
+                color: variables.$color-texto;
+
+                cursor: pointer;
+
+                transition:
+                    background-color variables.$transicion-rapida,
+                    color variables.$transicion-rapida;
+
+                &:hover {
+                    background-color: variables.$color-acento;
+                    color: variables.$color-blanco;
+                }
+            }
+
+            span {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+
+                min-width: 36px;
+                height: 34px;
+
+                border-top: 1px solid variables.$color-borde;
+                border-bottom: 1px solid variables.$color-borde;
+
+                font-weight: 600;
+            }
+        }
+
+        // ==============================
+        // SUBTOTAL
+        // ==============================
+
+        &__subtotal {
+            align-self: center;
+            font-size: variables.$texto-normal;
+            font-weight: 700;
+        }
+
+        // ==============================
+        // ELIMINAR
+        // ==============================
+
+        &__eliminar {
+            align-self: center;
+            justify-self: end;
+
+            width: 34px;
+            height: 34px;
+
+            border: 0;
+            border-radius: 50%;
+
+            background-color: transparent;
+            color: variables.$color-texto-secundario;
+
+            font-size: variables.$texto-grande;
+
+            cursor: pointer;
+
+            transition:
+                background-color variables.$transicion-rapida,
+                color variables.$transicion-rapida;
+
+            &:hover {
+                background-color: variables.$color-fondo;
+                color: variables.$color-acento;
+            }
+        }
+    }
+
+    // ==============================
+    // RESUMEN
+    // ==============================
+
+    &__resumen {
+        height: fit-content;
+
+        padding: variables.$espaciado-grande;
+
+        border: 1px solid variables.$color-borde;
+        border-radius: variables.$radio-medio;
+
+        background-color: variables.$color-superficie;
+    }
+
+    &__detalle {
+        display: grid;
+        gap: variables.$espaciado-pequeno;
+
+        padding-block: variables.$espaciado-medio;
+
+        border-bottom: 1px solid variables.$color-borde;
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            gap: variables.$espaciado-medio;
+
+            span {
+                color: variables.$color-texto-secundario;
+            }
+        }
+    }
+
+    &__total {
+        display: flex;
+        justify-content: space-between;
+        gap: variables.$espaciado-medio;
+
+        padding-block: variables.$espaciado-medio;
+
+        font-size: variables.$texto-grande;
+        font-weight: 700;
+    }
+
+    &__seguir-comprando {
+        display: block;
+
+        margin-top: variables.$espaciado-medio;
+
+        color: variables.$color-texto;
+
+        text-align: center;
+        text-decoration: none;
+
+        transition: color variables.$transicion-rapida;
+
+        &:hover {
+            color: variables.$color-acento-hover;
+        }
+    }
+
+    // ==============================
+    // BOTÓN ANCHO
+    // ==============================
+
+    .btn-sport--ancho {
+        width: 100%;
+    }
+
+    // ==============================
+    // CARRITO VACÍO
+    // ==============================
+
+    .estado-vacio {
+        padding: variables.$espaciado-xl variables.$espaciado-medio;
+
+        border: 1px dashed variables.$color-borde;
+        border-radius: variables.$radio-medio;
+
+        background-color: variables.$color-superficie;
+
+        text-align: center;
+    }
+
+    // ==============================
+    // TABLET
+    // ==============================
+
+    @include mixins.responsive(variables.$breakpoint-tablet) {
+
+        .carrito-item {
+            grid-template-columns: 110px 1fr auto auto;
+            align-items: center;
+
+            &__imagen {
+                width: 110px;
+                height: 110px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+
+            &__cantidad {
+                margin-top: 0;
+            }
+        }
+    }
+
+    // ==============================
+    // DESKTOP
+    // ==============================
+
+    @include mixins.responsive(variables.$breakpoint-desktop) {
+
+        &__contenedor {
+            grid-template-columns: 2fr 1fr;
+            align-items: start;
+        }
+
+        &__resumen {
+            position: sticky;
+            top: 100px;
+        }
+
+        .carrito-item {
+            grid-template-columns: 120px 1fr auto auto;
+
+            &__imagen {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    }
+}

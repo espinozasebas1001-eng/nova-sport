@@ -1,0 +1,57 @@
+@use "../utilities/variables";
+@use "../utilities/mixins";
+
+// ==============================
+// BOTONES
+// ==============================
+
+.btn-sport {
+    @include mixins.boton(
+        variables.$color-acento,
+        variables.$color-negro,
+        variables.$color-acento-hover
+    );
+}
+
+.btn-sport-outline {
+    @include mixins.boton(
+        transparent,
+        variables.$color-texto,
+        variables.$color-acento
+    );
+
+    border-color: variables.$color-texto;
+
+    &:hover {
+        color: variables.$color-negro;
+        border-color: variables.$color-acento;
+    }
+}
+
+.btn-dark {
+    @include mixins.boton(
+        variables.$color-primario,
+        variables.$color-blanco,
+        variables.$color-primario-hover
+    );
+}
+
+.btn-eliminar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border: 1px solid #DC2626;
+    border-radius: variables.$radio-pequeno;
+    background-color: transparent;
+    color: #DC2626;
+    cursor: pointer;
+    transition:
+        background-color variables.$transicion-normal,
+        color variables.$transicion-normal;
+
+    &:hover {
+        background-color: #DC2626;
+        color: variables.$color-blanco;
+    }
+}
