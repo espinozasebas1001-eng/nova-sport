@@ -96,9 +96,11 @@ El proyecto incorpora:
 
 El sitio cuenta con una navbar responsive desarrollada con Bootstrap 5, incluyendo menú hamburguesa para dispositivos móviles.
 
-##  Deploy
+## 🚀 Deploy
 
-**Sitio web:**  
+El proyecto se encuentra desplegado en Vercel:
+
+https://nova-sport-ej5ctefdm-sebastian-espinoza.vercel.app
 
 ## Repositorio
 
